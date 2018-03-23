@@ -1,0 +1,41 @@
+{
+  "name": "ubiquitous-system",
+  "version": "1.0.0",
+  "description": "Backend services for MarkDownEditor.",
+  "main": "server.js",
+  "dependencies": {
+    "apicache": "^1.2.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babelify": "^8.0.0",
+    "cors": "^2.8.4",
+    "date-info": "^1.1.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11",
+    "supersniff": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josediego/ubiquitous-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josediego/ubiquitous-system/issues"
+  },
+  "homepage": "https://github.com/josediego/ubiquitous-system#readme"
+}
