@@ -1,11 +1,11 @@
-const Markdown = require("../models/markdown.model.js")
+const Markdown = require('../models/markdown.model.js')
 
 exports.create = function(req, res) {
   // Create and Save a new Markdown
-  let content = JSON.parse(req.rawBody).content || ""
+  let content = JSON.parse(req.rawBody).content || ''
   if (!content) {
     return res.status(400).send({
-      message: "Markdown can not be empty"
+      message: 'Markdown can not be empty'
     })
   }
 
@@ -17,7 +17,7 @@ exports.create = function(req, res) {
     if (err) {
       console.log(err)
       res.status(500).send({
-        message: "Some error occurred while creating the Markdown."
+        message: 'Some error occurred while creating the Markdown.'
       })
     } else {
       res.send(data)
@@ -37,7 +37,7 @@ exports.findAll = function(req, res) {
       if (err) {
         console.log(err)
         res.status(500).send({
-          message: "Some error occurred while retrieving markdowns."
+          message: 'Some error occurred while retrieving markdowns.'
         })
       } else {
         res.send(markdowns)
@@ -50,19 +50,19 @@ exports.findOne = function(req, res) {
   Markdown.findById(req.params.markdownId, function(err, markdown) {
     if (err) {
       console.log(err)
-      if (err.kind === "ObjectId") {
+      if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "Markdown not found with id " + req.params.markdownId
+          message: 'Markdown not found with id ' + req.params.markdownId
         })
       }
       return res.status(500).send({
-        message: "Error retrieving markdown with id " + req.params.markdownId
+        message: 'Error retrieving markdown with id ' + req.params.markdownId
       })
     }
 
     if (!markdown) {
       return res.status(404).send({
-        message: "Markdown not found with id " + req.params.markdownId
+        message: 'Markdown not found with id ' + req.params.markdownId
       })
     }
 
@@ -75,28 +75,29 @@ exports.download = function(req, res) {
   Markdown.findById(req.params.markdownId, function(err, markdown) {
     if (err) {
       console.log(err)
-      if (err.kind === "ObjectId") {
+      if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "Markdown not found with id " + req.params.markdownId
+          message: 'Markdown not found with id ' + req.params.markdownId
         })
       }
       return res.status(500).send({
-        message: "Error retrieving markdown with id " + req.params.markdownId
+        message: 'Error retrieving markdown with id ' + req.params.markdownId
       })
     }
 
     if (!markdown) {
       return res.status(404).send({
-        message: "Markdown not found with id " + req.params.markdownId
+        message: 'Markdown not found with id ' + req.params.markdownId
       })
     }
 
     res.setHeader(
-      "Content-disposition",
-      "attachment; filename=" + markdown._id + ".md"
+      'Content-disposition',
+      'attachment; filename=' + markdown._id + '.md'
     )
-    res.setHeader("Content-type", "text/plain")
+    res.setHeader('Content-type', 'text/plain')
     res.write(markdown.content, function(err) {
+      console.log(err)
       res.end()
     })
   })
@@ -104,29 +105,29 @@ exports.download = function(req, res) {
 
 exports.update = function(req, res) {
   // Update a markdown identified by the markdownId in the request
-  let content = JSON.parse(req.rawBody).content || ""
+  let content = JSON.parse(req.rawBody).content || ''
   if (!content) {
     return res.status(400).send({
-      message: "Markdown can not be empty"
+      message: 'Markdown can not be empty'
     })
   }
 
-  Markdown.findById(req.params.markdownId, function(err, markdown) {
+  Markdown.findOne({ _id: req.params.markdownId }, function(err, markdown) {
     if (err) {
       console.log(err)
-      if (err.kind === "ObjectId") {
+      if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "Markdown not found with id " + req.params.markdownId
+          message: 'Markdown not found with id ' + req.params.markdownId
         })
       }
       return res.status(500).send({
-        message: "Error finding markdown with id " + req.params.markdownId
+        message: 'Error finding markdown with id ' + req.params.markdownId
       })
     }
 
     if (!markdown) {
       return res.status(404).send({
-        message: "Markdown not found with id " + req.params.markdownId
+        message: 'Markdown not found with id ' + req.params.markdownId
       })
     }
 
@@ -135,7 +136,7 @@ exports.update = function(req, res) {
     markdown.save(function(err, data) {
       if (err) {
         res.status(500).send({
-          message: "Could not update markdown with id " + req.params.markdownId
+          message: 'Could not update markdown with id ' + req.params.markdownId
         })
       } else {
         res.send(data)
@@ -149,19 +150,19 @@ exports.delete = function(req, res) {
   Markdown.findById(req.params.markdownId, function(err, markdown) {
     if (err) {
       console.log(err)
-      if (err.kind === "ObjectId") {
+      if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "Markdown not found with id " + req.params.markdownId
+          message: 'Markdown not found with id ' + req.params.markdownId
         })
       }
       return res.status(500).send({
-        message: "Error finding markdown with id " + req.params.markdownId
+        message: 'Error finding markdown with id ' + req.params.markdownId
       })
     }
 
     if (!markdown) {
       return res.status(404).send({
-        message: "Markdown not found with id " + req.params.markdownId
+        message: 'Markdown not found with id ' + req.params.markdownId
       })
     }
 
@@ -170,7 +171,7 @@ exports.delete = function(req, res) {
     markdown.save(function(err, data) {
       if (err) {
         res.status(500).send({
-          message: "Could not update markdown with id " + req.params.markdownId
+          message: 'Could not update markdown with id ' + req.params.markdownId
         })
       } else {
         res.send(data)

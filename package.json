@@ -16,6 +16,7 @@
     "supersniff": "^2.1.0"
   },
   "devDependencies": {
+    "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
@@ -27,7 +28,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "lint": "eslint --ext .js src --fix"
   },
   "repository": {
     "type": "git",

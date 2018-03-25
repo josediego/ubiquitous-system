@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 let MarkdownSchema = mongoose.Schema(
   {
@@ -13,4 +13,4 @@ let MarkdownSchema = mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model("Markdown", MarkdownSchema)
+module.exports = mongoose.model('Markdown', MarkdownSchema)
